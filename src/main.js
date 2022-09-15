@@ -10,6 +10,7 @@ import "@/mock/mockServe";
 import router from "@/router";
 import store from "@/store";
 import "swiper/css/swiper.css";
+import { reqGetSearchInfo } from "@/api";
 new Vue({
   render: (h) => h(App),
   router,
