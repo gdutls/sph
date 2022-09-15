@@ -1,8 +1,9 @@
-import { reqCategoryList, reqGetBannerList } from "@/api";
+import { reqCategoryList, reqGetBannerList, reqFloorList } from "@/api";
 const state = {
-  //不能瞎写，要看返回数据的类型
+  //数据格式不能瞎写，要看返回数据的类型
   categoryList: [],
   bannerList: [],
+  floorList: [],
 };
 const mutations = {
   CATEGORYLIST(state, categoryList) {
@@ -10,6 +11,9 @@ const mutations = {
   },
   GETBANNERLIST(state, bannerList) {
     state.bannerList = bannerList;
+  },
+  GETFLOORLIST(state, floorList) {
+    state.floorList = floorList;
   },
 };
 const actions = {
@@ -27,6 +31,12 @@ const actions = {
     let result = await reqGetBannerList();
     if (result.code == 200) {
       commit("GETBANNERLIST", result.data);
+    }
+  },
+  async getFloorList({ commit }) {
+    let result = await reqFloorList();
+    if (result.code == 200) {
+      commit("GETFLOORLIST", result.data);
     }
   },
 };
