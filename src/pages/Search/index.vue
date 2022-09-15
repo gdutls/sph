@@ -462,6 +462,7 @@
 
 <script>
 import SearchSelector from "./SearchSelector/SearchSelector";
+import { mapGetters, mapState } from "vuex";
 export default {
   name: "Search",
 
@@ -470,6 +471,9 @@ export default {
   },
   mounted() {
     this.$store.dispatch("getSearchList", {});
+  },
+  computed: {
+    ...mapGetters(["goodsList"]),
   },
 };
 </script>

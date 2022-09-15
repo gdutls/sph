@@ -17,7 +17,22 @@ const actions = {
     }
   },
 };
-const getters = {};
+//计算属性
+//项目当中getters主要为了简化仓库中的数据
+//可以把我们将来在组件当中需要用的数据简化一下【将来组件在获取数据的时候就方便了】
+const getters = {
+  //当前形参state，当前仓库中的state，并非大仓库中的那个state,而是当前小仓库
+  goodsList(state) {
+    //空数组是为了防止没网遍历undefined出错
+    return state.SearchList.goodsList || [];
+  },
+  trademarkList(state) {
+    return state.SearchList.trademarkList;
+  },
+  attrsList(state) {
+    return state.SearchList.attrsList;
+  },
+};
 
 export default {
   state,
