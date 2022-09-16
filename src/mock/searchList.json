@@ -1,0 +1,278 @@
+{
+    "trademarkList": [
+        {
+            "tmId": 1,
+            "tmName": "苹果"
+        },
+        {
+            "tmId": 2,
+            "tmName": "华为"
+        },
+        {
+            "tmId": 3,
+            "tmName": "小米"
+        },
+        {
+            "tmId": 4,
+            "tmName": "一加"
+        }
+    ],
+    "attrsList": [
+        {
+            "attrId": 1,
+            "attrValueList": [
+                "4500-11999",
+                "2800-4499"
+            ],
+            "attrName": "价格"
+        },
+        {
+            "attrId": 2,
+            "attrValueList": [
+                "4500-11999",
+                "2800-4499"
+            ],
+            "attrName": "尺寸"
+        },
+        {
+            "attrId": 3,
+            "attrValueList": [
+                "4500-11999",
+                "2800-4499"
+            ],
+            "attrName": "价格"
+        },
+        {
+            "attrId": 4,
+            "attrValueList": [
+                "4500-11999",
+                "2800-4499"
+            ],
+            "attrName": "价格"
+        },
+        {
+            "attrId": 5,
+            "attrValueList": [
+                "4500-11999",
+                "2800-4499"
+            ],
+            "attrName": "价格"
+        },
+        {
+            "attrId": 6,
+            "attrValueList": [
+                "4500-11999",
+                "2800-4499"
+            ],
+            "attrName": "价格"
+        },
+        {
+            "attrId": 7,
+            "attrValueList": [
+                "4500-11999",
+                "2800-4499"
+            ],
+            "attrName": "价格"
+        },
+        {
+            "attrId": 8,
+            "attrValueList": [
+                "4500-11999",
+                "2800-4499"
+            ],
+            "attrName": "价格"
+        },
+        {
+            "attrId": 9,
+            "attrValueList": [
+                "4500-11999",
+                "2800-4499"
+            ],
+            "attrName": "价格"
+        },
+        {
+            "attrId": 10,
+            "attrValueList": [
+                "4500-11999",
+                "2800-4499"
+            ],
+            "attrName": "价格"
+        }
+    ],
+    "goodsList": [
+        {
+            "id": 2,
+            "defaultImg": "https://img14.360buyimg.com/n0/jfs/t1/178226/9/4630/71891/60a26b6fE01c117b7/42c213536efd53c0.jpg.avif",
+            "title": "荣耀Play5T 22.5W超级快充 5000mAh大电池 6.5英寸护眼屏 全网通8GB+128GB钛空银",
+            "price": 999,
+            "createTime": null,
+            "tmId": null,
+            "tmName": null,
+            "category1Id": null,
+            "category1Name": null,
+            "category2Id": null,
+            "category2Name": null,
+            "category3Id": null,
+            "category3Name": null,
+            "hotScore": 0,
+            "attrs": null
+        },
+        {
+            "id": 3,
+            "defaultImg": "https://img14.360buyimg.com/n0/jfs/t1/37080/26/16516/104493/62c2b3e8Eea2e412e/1aff452934b2fdcf.jpg.avif",
+            "title": "小米12S Pro 骁龙8+处理器 徕卡光学镜头 2K超视感屏 120Hz高刷 120W秒充 12GB+256GB 黑色 5G手机",
+            "price": 5399,
+            "createTime": null,
+            "tmId": null,
+            "tmName": null,
+            "category1Id": null,
+            "category1Name": null,
+            "category2Id": null,
+            "category2Name": null,
+            "category3Id": null,
+            "category3Name": null,
+            "hotScore": 0,
+            "attrs": null
+        },
+        {
+            "id": 4,
+            "defaultImg": "https://img14.360buyimg.com/n0/jfs/t1/219387/1/2219/59402/617a5e1eE2e382a01/458b5005484c3e00.jpg.avif",
+            "title": "Redmi Note 11 5G 天玑810 33W Pro快充 5000mAh大电池 6GB +128GB 神秘黑境 智能手机 小米 红米",
+            "price": 1199,
+            "createTime": null,
+            "tmId": null,
+            "tmName": null,
+            "category1Id": null,
+            "category1Name": null,
+            "category2Id": null,
+            "category2Name": null,
+            "category3Id": null,
+            "category3Name": null,
+            "hotScore": 0,
+            "attrs": null
+        },
+        {
+            "id": 5,
+            "defaultImg": "https://img14.360buyimg.com/n0/jfs/t1/18849/39/16302/100333/6282704cE589fbd16/8e479b087fabe48f.jpg.avif",
+            "title": "OPPO 一加 Ace 竞速版 12GB+256GB竞技灰享OPPO官方售后 天玑8100-MAX 120Hz变速电竞直屏游戏稳帧引擎5G手机",
+            "price": 2299,
+            "createTime": null,
+            "tmId": null,
+            "tmName": null,
+            "category1Id": null,
+            "category1Name": null,
+            "category2Id": null,
+            "category2Name": null,
+            "category3Id": null,
+            "category3Name": null,
+            "hotScore": 0,
+            "attrs": null
+        },
+        {
+            "id": 6,
+            "defaultImg": "https://img14.360buyimg.com/n0/jfs/t1/219583/26/7800/151098/61b8a3f2E2879c4f6/9b73c1d24e0abecb.jpg.avif",
+            "title": "荣耀X30 骁龙6nm疾速5G芯 66W超级快充 120Hz全视屏 全网通版 8GB+128GB 钛空银",
+            "price": 1549,
+            "createTime": null,
+            "tmId": null,
+            "tmName": null,
+            "category1Id": null,
+            "category1Name": null,
+            "category2Id": null,
+            "category2Name": null,
+            "category3Id": null,
+            "category3Name": null,
+            "hotScore": 0,
+            "attrs": null
+        },
+        {
+            "id": 7,
+            "defaultImg": "https://img14.360buyimg.com/n0/jfs/t1/113238/15/31571/50086/631ad791E3822226d/243c41f82aa1f637.jpg.avif",
+            "title": "华为智选 Hi nova 9z 5G全网通手机 6.67英寸120Hz原彩屏 6400万像素超清摄影 66W快充8GB+128GB亮黑色",
+            "price": 1399,
+            "createTime": null,
+            "tmId": null,
+            "tmName": null,
+            "category1Id": null,
+            "category1Name": null,
+            "category2Id": null,
+            "category2Name": null,
+            "category3Id": null,
+            "category3Name": null,
+            "hotScore": 0,
+            "attrs": null
+        },
+        {
+            "id": 8,
+            "defaultImg": "https://img14.360buyimg.com/n0/jfs/t1/181763/30/141/131472/607f39d0Eeb10fd17/dcac185f97ee5878.jpg.avif",
+            "title": "Apple iPhone 12 (A2404) 128GB 紫色 支持移动联通电信5G 双卡双待手机",
+            "price": 4699,
+            "createTime": null,
+            "tmId": null,
+            "tmName": null,
+            "category1Id": null,
+            "category1Name": null,
+            "category2Id": null,
+            "category2Name": null,
+            "category3Id": null,
+            "category3Name": null,
+            "hotScore": 0,
+            "attrs": null
+        },
+        {
+            "id": 9,
+            "defaultImg": "https://img14.360buyimg.com/n0/jfs/t1/114685/29/30239/19477/63191dc3E28765f27/d8aae16330834a26.jpg",
+            "title": "Apple iPhone 14 Pro (A2892) 256GB 暗紫色 支持移动联通电信5G 双卡双待手机",
+            "price": 8899,
+            "createTime": null,
+            "tmId": null,
+            "tmName": null,
+            "category1Id": null,
+            "category1Name": null,
+            "category2Id": null,
+            "category2Name": null,
+            "category3Id": null,
+            "category3Name": null,
+            "hotScore": 0,
+            "attrs": null
+        },
+        {
+            "id": 10,
+            "defaultImg": "https://img14.360buyimg.com/n0/jfs/t1/216578/34/14150/121785/62286978E1a6f4ef0/b6b32191c26d161b.jpg.avif",
+            "title": "https://img14.360buyimg.com/n0/jfs/t1/216578/34/14150/121785/62286978E1a6f4ef0/b6b32191c26d161b.jpg.avif",
+            "price": 5999,
+            "createTime": null,
+            "tmId": null,
+            "tmName": null,
+            "category1Id": null,
+            "category1Name": null,
+            "category2Id": null,
+            "category2Name": null,
+            "category3Id": null,
+            "category3Name": null,
+            "hotScore": 0,
+            "attrs": null
+        },
+        {
+            "id": 11,
+            "defaultImg": "https://img14.360buyimg.com/n0/jfs/t1/30436/40/16246/308443/62cfb72fE79907d73/fc47c9584b360fa1.png.avif",
+            "title": "Apple/iPhone12ProMax 苹果12Pro 全新正品拍照手机高刷新率未激活 金色12promax 512GB未激活权益机",
+            "price": 7499,
+            "createTime": null,
+            "tmId": null,
+            "tmName": null,
+            "category1Id": null,
+            "category1Name": null,
+            "category2Id": null,
+            "category2Name": null,
+            "category3Id": null,
+            "category3Name": null,
+            "hotScore": 0,
+            "attrs": null
+        }
+    ],
+    "total": 26,
+    "pageSize": 10,
+    "pageNo": 1,
+    "totalPages": 3
+}
