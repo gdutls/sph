@@ -17,7 +17,7 @@
             <li class="with-x">OPPO<i>×</i></li>
           </ul>
         </div>
-
+        <!-- list接口坏了，暂不写结构 -->
         <!--selector-->
         <SearchSelector />
 
@@ -462,7 +462,7 @@
 
 <script>
 import SearchSelector from "./SearchSelector/SearchSelector";
-import { mapGetters, mapState } from "vuex";
+import { mapGetters } from "vuex";
 export default {
   name: "Search",
 

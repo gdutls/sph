@@ -1,10 +1,10 @@
 import { reqGetSearchInfo } from "@/api";
 const state = {
-  SearchList: {},
+  searchList: {},
 };
 const mutations = {
-  GETSEARCHLIST(state, SearchList) {
-    state.SearchList = SearchList;
+  GETSEARCHLIST(state, searchList) {
+    state.searchList = searchList;
   },
 };
 const actions = {
@@ -24,13 +24,13 @@ const getters = {
   //当前形参state，当前仓库中的state，并非大仓库中的那个state,而是当前小仓库
   goodsList(state) {
     //空数组是为了防止没网遍历undefined出错
-    return state.SearchList.goodsList || [];
+    return state.searchList.goodsList || [];
   },
   trademarkList(state) {
-    return state.SearchList.trademarkList;
+    return state.searchList.trademarkList;
   },
   attrsList(state) {
-    return state.SearchList.attrsList;
+    return state.searchList.attrsList;
   },
 };
 
