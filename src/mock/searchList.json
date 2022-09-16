@@ -21,82 +21,52 @@
         {
             "attrId": 1,
             "attrValueList": [
-                "4500-11999",
-                "2800-4499"
+                "64GB",
+                "128GB",
+                "256GB",
+                "1TB"
             ],
-            "attrName": "价格"
+            "attrName": "机身内存"
         },
         {
             "attrId": 2,
             "attrValueList": [
-                "4500-11999",
-                "2800-4499"
+                "12GB",
+                "8GB",
+                "4GB及以下"
             ],
-            "attrName": "尺寸"
+            "attrName": "运行内存"
         },
         {
             "attrId": 3,
             "attrValueList": [
-                "4500-11999",
-                "2800-4499"
+                "安卓",
+                "IOS"
             ],
-            "attrName": "价格"
+            "attrName": "手机系统"
         },
         {
             "attrId": 4,
             "attrValueList": [
-                "4500-11999",
-                "2800-4499"
+                "苹果",
+                "华为",
+                "小米",
+                "一加",
+                "三星",
+                "OPPO"
             ],
-            "attrName": "价格"
+            "attrName": "手机品牌"
         },
         {
             "attrId": 5,
             "attrValueList": [
-                "4500-11999",
-                "2800-4499"
+                "骁龙",
+                "A15",
+                "麒麟",
+                "A14",
+                "天玑"
             ],
-            "attrName": "价格"
-        },
-        {
-            "attrId": 6,
-            "attrValueList": [
-                "4500-11999",
-                "2800-4499"
-            ],
-            "attrName": "价格"
-        },
-        {
-            "attrId": 7,
-            "attrValueList": [
-                "4500-11999",
-                "2800-4499"
-            ],
-            "attrName": "价格"
-        },
-        {
-            "attrId": 8,
-            "attrValueList": [
-                "4500-11999",
-                "2800-4499"
-            ],
-            "attrName": "价格"
-        },
-        {
-            "attrId": 9,
-            "attrValueList": [
-                "4500-11999",
-                "2800-4499"
-            ],
-            "attrName": "价格"
-        },
-        {
-            "attrId": 10,
-            "attrValueList": [
-                "4500-11999",
-                "2800-4499"
-            ],
-            "attrName": "价格"
+            "attrName": "CPU型号"
         }
     ],
     "goodsList": [

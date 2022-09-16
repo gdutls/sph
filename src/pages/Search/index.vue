@@ -11,10 +11,16 @@
             </li>
           </ul>
           <ul class="fl sui-tag">
-            <li class="with-x">手机</li>
-            <li class="with-x">iphone<i>×</i></li>
-            <li class="with-x">华为<i>×</i></li>
-            <li class="with-x">OPPO<i>×</i></li>
+            <!-- 分类的面包屑 -->
+            <li class="with-x" v-if="searchParams.categoryName">
+              {{ searchParams.categoryName }}
+              <i @click="removeCategoryName">x</i>
+            </li>
+            <!-- 关键字的面包屑 -->
+            <li class="with-x" v-if="searchParams.keyword">
+              {{ searchParams.keyword }}
+              <i @click="removeKeyword">x</i>
+            </li>
           </ul>
         </div>
         <!-- list接口坏了，暂不写结构 -->
@@ -138,11 +144,82 @@ export default {
   components: {
     SearchSelector,
   },
+  data() {
+    return {
+      searchParams: {
+        category1Id: "",
+        category2Id: "",
+        category3Id: "",
+        categoryName: "",
+        //关键字
+        keyword: "",
+        //排序
+        order: "",
+        //分页器用的，代表当前是第几页
+        pageNo: 1,
+        //代表的是每一个展示数据个数
+        pageSize: 3,
+        //平台售卖属性操作带的参数
+        props: [],
+        //品牌
+        trademark: "",
+      },
+    };
+  },
+  //当组件挂载完毕之前执行一次【先于mounted之前】
+  beforeMount() {
+    //在发请求之前，把接口需要传递参数，进行整理（在给服务器发请求之前，把参数整理好，服务器就会返回查询的数据)
+    Object.assign(this.searchParams, this.$route.query, this.$route.params);
+  },
   mounted() {
-    this.$store.dispatch("getSearchList", {});
+    this.getData();
   },
   computed: {
     ...mapGetters(["goodsList"]),
+  },
+  methods: {
+    getData() {
+      this.$store.dispatch("getSearchList", this.searchParams);
+    },
+    removeCategoryName() {
+      //把带给服务器的参数置空了,还需要向服务器发请求
+      //带给服务器参数说明可有可无的:如果属性值为空的字符串还是会把相应的字段带给服务器
+      //但是你把相应的字段变为undefined，当前这个字段不会带给服务器
+      this.searchParams.categoryName = undefined;
+      this.searchParams.category1Id = undefined;
+      this.searchParams.category2Id = undefined;
+      this.searchParams.category3Id = undefined;
+      this.getData();
+      //地址栏也要改:路由跳转（现在的路由跳转只是跳转到自己这里）
+      // 严谨：本意是删除query，但是路径汇总有params不应该删除，路由跳转的时候应该带着
+      if (this.$route.params) {
+        this.$router.push({ name: "search", params: this.$route.params });
+      }
+    },
+    removeKeyword() {
+      //给服务器带的参数searchParams的keyword置空
+      this.searchParams.keyword = undefined;
+      // 再发请求
+      this.getData();
+      // 通知兄弟组件Header清除关键字
+      this.$bus.$emit("clear");
+      //进行路由跳转
+      if (this.$route.query) {
+        this.$router.push({ name: "search", query: this.$route.query });
+      }
+    },
+  },
+  watch: {
+    //watch和computed都不用this，属性是在组件身上
+    $route(newValue, OldValue) {
+      Object.assign(this.searchParams, this.$route.query, this.$route.params);
+      this.getData();
+      //每一次请求完毕，应该把相应的1、2、3级分类的id置空的，让他接受下一次的相应1、2、3
+      //分类名字与关键字不用清理:因为每一次路由发生变化的时候，都会给他赋予新的数据
+      this.searchParams.category1Id = undefined;
+      this.searchParams.category2Id = undefined;
+      this.searchParams.category3Id = undefined;
+    },
   },
 };
 </script>

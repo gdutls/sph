@@ -13,6 +13,10 @@ import "swiper/css/swiper.css";
 import { reqGetSearchInfo } from "@/api";
 new Vue({
   render: (h) => h(App),
+  // 全局事件总线$bus配置
+  beforeCreate() {
+    Vue.prototype.$bus = this;
+  },
   router,
   store,
 }).$mount("#app");

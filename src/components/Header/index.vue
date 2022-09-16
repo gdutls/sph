@@ -71,6 +71,13 @@ export default {
       }
     },
   },
+  mounted() {
+    //通过全局事件总线清除关键字  在mounted挂载DOM结构以后，就绑定了这个全局事件总线的事件，点击clearKeyword时，会触发这个回调函数
+    this.$bus.$on("clear", () => {
+      //回调函数中的this指向，箭头函数没有自己的this，当出现this时会向上一级找，此时指向的是这个组件实例
+      this.keyword = "";
+    });
+  },
 };
 </script>
 
