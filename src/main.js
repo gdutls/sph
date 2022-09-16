@@ -10,6 +10,7 @@ import "@/mock/mockServe";
 import router from "@/router";
 import store from "@/store";
 import "swiper/css/swiper.css";
+//list接口坏了，暂不使用
 import { reqGetSearchInfo } from "@/api";
 new Vue({
   render: (h) => h(App),
