@@ -21,11 +21,16 @@
               {{ searchParams.keyword }}
               <i @click="removeKeyword">x</i>
             </li>
+            <!-- 品牌的面包屑 -->
+            <li class="with-x" v-if="searchParams.trademark">
+              {{ searchParams.trademark.split(":")[1] }}
+              <i @click="removeTradeMark">x</i>
+            </li>
           </ul>
         </div>
         <!-- list接口坏了，暂不写结构 -->
         <!--selector-->
-        <SearchSelector />
+        <SearchSelector @trademarkInfo="trademarkInfo" />
 
         <!--details-->
         <div class="details clearfix">
@@ -207,6 +212,17 @@ export default {
       if (this.$route.query) {
         this.$router.push({ name: "search", query: this.$route.query });
       }
+    },
+    //自定义事件回调
+    trademarkInfo(trademark) {
+      // 整理品牌字段的参数  "ID:品牌名称"
+      this.searchParams.trademark = `${trademark.tmId}:${trademark.tmName}`;
+      //再次发请求获取search模块列表数据进行展示
+      this.getData();
+    },
+    removeTradeMark() {
+      this.searchParams.trademark = undefined;
+      this.getData();
     },
   },
   watch: {
