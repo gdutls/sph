@@ -26,34 +26,51 @@
               {{ searchParams.trademark.split(":")[1] }}
               <i @click="removeTradeMark">x</i>
             </li>
+            <!-- 平台的售卖属性值展示 -->
+            <li
+              class="with-x"
+              v-for="(attrValue, index) in searchParams.props"
+              :key="index"
+            >
+              {{ attrValue.split(":")[1] }}
+              <i @click="removeAttr(index)">x</i>
+            </li>
           </ul>
         </div>
         <!-- list接口坏了，暂不写结构 -->
         <!--selector-->
-        <SearchSelector @trademarkInfo="trademarkInfo" />
+        <SearchSelector @trademarkInfo="trademarkInfo" @attrInfo="attrInfo" />
 
         <!--details-->
         <div class="details clearfix">
           <div class="sui-navbar">
             <div class="navbar-inner filter">
+              <!-- 排序的解构 -->
               <ul class="sui-nav">
-                <li class="active">
-                  <a href="#">综合</a>
+                <!-- 绑定class样式--对象写法，适用于：要绑定的样式个数确定、名字也确定，但要动态决定用不用 -->
+                <li :class="{ active: isOne }" @click="changeOrder('1')">
+                  <a
+                    >综合<span
+                      v-show="isOne"
+                      class="iconfont"
+                      :class="{
+                        'icon-long-arrow-up': isAsc,
+                        'icon-long-arrow-down': isDesc,
+                      }"
+                    ></span
+                  ></a>
                 </li>
-                <li>
-                  <a href="#">销量</a>
-                </li>
-                <li>
-                  <a href="#">新品</a>
-                </li>
-                <li>
-                  <a href="#">评价</a>
-                </li>
-                <li>
-                  <a href="#">价格⬆</a>
-                </li>
-                <li>
-                  <a href="#">价格⬇</a>
+                <li :class="{ active: isTwo }" @click="changeOrder('2')">
+                  <a
+                    >价格<span
+                      v-show="isTwo"
+                      class="iconfont"
+                      :class="{
+                        'icon-long-arrow-up': isAsc,
+                        'icon-long-arrow-down': isDesc,
+                      }"
+                    ></span
+                  ></a>
                 </li>
               </ul>
             </div>
@@ -105,35 +122,13 @@
             </ul>
           </div>
           <!-- 分页器 -->
-          <div class="fr page">
-            <div class="sui-pagination clearfix">
-              <ul>
-                <li class="prev disabled">
-                  <a href="#">«上一页</a>
-                </li>
-                <li class="active">
-                  <a href="#">1</a>
-                </li>
-                <li>
-                  <a href="#">2</a>
-                </li>
-                <li>
-                  <a href="#">3</a>
-                </li>
-                <li>
-                  <a href="#">4</a>
-                </li>
-                <li>
-                  <a href="#">5</a>
-                </li>
-                <li class="dotted"><span>...</span></li>
-                <li class="next">
-                  <a href="#">下一页»</a>
-                </li>
-              </ul>
-              <div><span>共10页&nbsp;</span></div>
-            </div>
-          </div>
+          <Pagination
+            :pageNo="searchParams.pageNo"
+            :pageSize="searchParams.pageSize"
+            :total="total"
+            :continues="5"
+            @getPageNo="getPageNo"
+          />
         </div>
       </div>
     </div>
@@ -142,10 +137,9 @@
 
 <script>
 import SearchSelector from "./SearchSelector/SearchSelector";
-import { mapGetters } from "vuex";
+import { mapGetters, mapState } from "vuex";
 export default {
   name: "Search",
-
   components: {
     SearchSelector,
   },
@@ -159,7 +153,7 @@ export default {
         //关键字
         keyword: "",
         //排序
-        order: "",
+        order: "1:desc",
         //分页器用的，代表当前是第几页
         pageNo: 1,
         //代表的是每一个展示数据个数
@@ -181,6 +175,22 @@ export default {
   },
   computed: {
     ...mapGetters(["goodsList"]),
+    isOne() {
+      return this.searchParams.order.indexOf("1") != -1;
+    },
+    isTwo() {
+      return this.searchParams.order.indexOf("2") != -1;
+    },
+    isAsc() {
+      return this.searchParams.order.indexOf("asc") != -1;
+    },
+    isDesc() {
+      return this.searchParams.order.indexOf("desc") != -1;
+    },
+    //获取search模块展示产品一共多少数据
+    ...mapState({
+      total: (state) => state.search.searchList.total,
+    }),
   },
   methods: {
     getData() {
@@ -222,6 +232,43 @@ export default {
     },
     removeTradeMark() {
       this.searchParams.trademark = undefined;
+      this.getData();
+    },
+    //收集平台属性地方回调函数（自定义事件）
+    attrInfo(attr, attrValue) {
+      let props = `${attr.attrId}:${attrValue}:${attr.attrName}`;
+      //数组去重
+      if (this.searchParams.props.indexOf(props) == -1)
+        this.searchParams.props.push(props);
+      this.getData();
+    },
+    //删除售卖属性
+    removeAttr(index) {
+      this.searchParams.props.splice(index, 1);
+      this.getData();
+    },
+    //排序操作  flag形参：一个标记，代表用户点击的是综合（1）价格（2）[用户点击的时候传递进来的]
+    changeOrder(flag) {
+      let originOrder = this.searchParams.order;
+      //将order例如"1:desc"拆为两个字段orderFlag(1 2)、orderSort(asc desc)
+      let originFlag = originOrder.split(":")[0];
+      let originSort = originOrder.split(":")[1];
+      //准备一个新的order属性值
+      let newOrder = "";
+      //点击的是当前高亮按钮
+      if (flag == originFlag) {
+        newOrder = `${originFlag}:${originSort == "desc" ? "asc" : "desc"}`;
+      } else {
+        //点击的不是同一个按钮 由综合到价格、由价格到综合
+        newOrder = `${flag}:${"desc"}`;
+      }
+      //新的order赋予searchParams
+      this.searchParams.order = newOrder;
+      //发请求
+      this.getData();
+    },
+    getPageNo(pageNo) {
+      this.searchParams.pageNo = pageNo;
       this.getData();
     },
   },
