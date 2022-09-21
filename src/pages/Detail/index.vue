@@ -104,9 +104,19 @@
             </div>
             <div class="cartWrap">
               <div class="controls">
-                <input autocomplete="off" class="itxt" />
-                <a href="javascript:" class="plus">+</a>
-                <a href="javascript:" class="mins">-</a>
+                <input
+                  autocomplete="off"
+                  class="itxt"
+                  v-model="skuNum"
+                  @change="changeSkuNum"
+                />
+                <a href="javascript:" class="plus" @click="skuNum++">+</a>
+                <a
+                  href="javascript:"
+                  class="mins"
+                  @click="skuNum > 1 ? skuNum-- : (skuNum = 1)"
+                  >-</a
+                >
               </div>
               <div class="add">
                 <a href="javascript:">加入购物车</a>
@@ -353,6 +363,12 @@ import Zoom from "./Zoom/Zoom";
 import { mapGetters } from "vuex";
 export default {
   name: "Detail",
+  data() {
+    return {
+      //购买产品的数量
+      skuNum: 1,
+    };
+  },
   components: {
     ImageList,
     Zoom,
@@ -376,6 +392,17 @@ export default {
       });
       //点击的那个售卖属性值
       saleAttrvalue.isChecked = 1;
+    },
+    changeSkuNum(event) {
+      //用户输入进来的文本*1
+      let value = event.target.value * 1;
+      //如果用户输入进来的非法，出现NaN或者小于1
+      if (isNaN(value) || value < 1) {
+        this.skuNum = 1;
+      } else {
+        //正常大于1【整数】如果输入小数取整
+        this.skuNum = parseInt(value);
+      }
     },
   },
 };
