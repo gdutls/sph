@@ -16,3 +16,7 @@ export const reqFloorList = () => mockRequests.get("/floor");
 // api/list接口崩了，暂时mock数据
 export const reqGetSearchInfo = (params) =>
   mockRequests({ url: "/list", methods: "post", data: params });
+
+//获取产品详情信息的接口 url：/api/item/{ skuId } 请求方式：get
+export const reqGoodsInfo = (skuId) =>
+  requests({ url: `/item/${skuId}`, method: "get" });

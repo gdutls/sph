@@ -12,7 +12,7 @@
     </button>
     <button v-if="startNumAndEndNum.start > 2">···</button>
 
-    <!-- 中间部分 -->
+    <!-- 中间部分  v-for还可以遍历数字 -->
     <button
       v-for="(page, index) in startNumAndEndNum.end"
       :key="index"
