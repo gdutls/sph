@@ -119,7 +119,9 @@
                 >
               </div>
               <div class="add">
-                <a href="javascript:">加入购物车</a>
+                <!-- 以前咱们的路由跳转，从A路由跳转到B路由，这里在加入购物车，进行路由跳转之前，发请求把你购买的产品的信息
+                通过请求的形式通知服务器，服务器进行响应的存储 -->
+                <a @click="addShopcar">加入购物车</a>
               </div>
             </div>
           </div>
@@ -393,6 +395,7 @@ export default {
       //点击的那个售卖属性值
       saleAttrvalue.isChecked = 1;
     },
+    //表单元素修改产品个数
     changeSkuNum(event) {
       //用户输入进来的文本*1
       let value = event.target.value * 1;
@@ -402,6 +405,30 @@ export default {
       } else {
         //正常大于1【整数】如果输入小数取整
         this.skuNum = parseInt(value);
+      }
+    },
+    //加入购物车的回调函数
+    async addShopcar() {
+      //1:发请求---将产品加入到数据库（通知服务器)
+      // 当前这里是派发一个action，也向服务器发请求,判断加入购物车是成功还是失败了,进行相应的操作。
+      //  this. $stone.dispatch ( 'addOrUpdateShopCart ' ,{ skuId:this.$route.params. skuid, skuNum:this.skuNum})上面这行代码说白了:调用仓库中的addOrUpdateShopCart,这个方法加上asyc，返回一定是一个Promise
+      // 2.需要知道这次请求成功还是失败，如果成功进行路由跳转，如果失败就给用户提示
+      try {
+        await this.$store.dispatch("addOrUpdateShopCart", {
+          skuId: this.$route.params.skuid,
+          skuNum: this.skuNum,
+        });
+        //3.路由跳转
+        //4:在路由跳转的时侯还需要将产品的信息带给下一级的路由组件
+        //一些简单的数据skuNum，通过query形式给路由组件传递过去
+        //产品信息的数据【比较复杂:skuInfo(对象)】 ,通过会话存储（不持久化,会话结束数据在消失)/本地存储|会话存储,一般存储的是字符串
+        sessionStorage.setItem("SKUINFO", JSON.stringify(this.skuInfo));
+        this.$router.push({
+          name: "addCartSuccess",
+          query: { skuNum: this.skuNum },
+        });
+      } catch (error) {
+        alert(error.message);
       }
     },
   },

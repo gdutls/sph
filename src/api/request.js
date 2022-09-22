@@ -1,6 +1,8 @@
 //对于axios进行二次封装
 import axios from "axios";
 import nprogress from "nprogress";
+//当前模块引入store
+import store from "@/store";
 import "nprogress/nprogress.css";
 //底下的代码也是创建axios实例
 let requests = axios.create({
@@ -14,6 +16,10 @@ let requests = axios.create({
 requests.interceptors.request.use((config) => {
   //现在的问题是config是什么?配置对象
   //可以让进度条开始动
+  if (store.state.detail.uuid_token) {
+    //请求头添加一个字段(userTempId),和后台商量好了
+    config.headers.userTempId = store.state.detail.uuid_token;
+  }
   nprogress.start();
   return config;
 });
