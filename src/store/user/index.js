@@ -1,8 +1,15 @@
 // 登录和注册的模块
-import { reqGetCode, reqUserRegister, reqUserLogin, reqUserInfo } from "@/api";
+import {
+  reqGetCode,
+  reqUserRegister,
+  reqUserLogin,
+  reqUserInfo,
+  reqLogout,
+} from "@/api";
+import { setToken, getToken, removeToken } from "@/utils/token";
 const state = {
   code: "",
-  token: "",
+  token: getToken(),
   userInfo: {},
 };
 const mutations = {
@@ -14,6 +21,11 @@ const mutations = {
   },
   GETUSERINFO(state, userInfo) {
     state.userInfo = userInfo;
+  },
+  CLEAR(state) {
+    state.token = "";
+    state.userInfo = {};
+    removeToken();
   },
 };
 const actions = {
@@ -43,7 +55,10 @@ const actions = {
     //服务器下发token，用户唯一标识符(uuid)
     //将来经常通过带token找服务器要用户信息进行展示
     if (result.code == 200) {
+      //用户已经登录成功且获取到token
       commit("USERLOGIN", result.data.token);
+      //持久化存储token  token本身是字符串，不用转
+      setToken(result.data.token);
       return "ok";
     } else {
       return Promise.reject("failed");
@@ -57,6 +72,18 @@ const actions = {
       return "ok";
     } else {
       return Promise.reject("failed");
+    }
+  },
+  //退出登录
+  async userLogout({ commit }) {
+    //只是向服务器发起一次请求，通知服务器清除token
+    let result = await reqLogout();
+    //action不能操作stata，提交mutation修改
+    if (result.code == 200) {
+      commit("CLEAR");
+      return "ok";
+    } else {
+      return Promise.reject(new Error("failed"));
     }
   },
 };
