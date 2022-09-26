@@ -39,3 +39,24 @@ export const reqDeleteCartById = (skuId) =>
 //URL:/api/cart/checkCart/{skuld}/{isChecked}   method:get
 export const reqUpdateCheckedByid = (skuId, isChecked) =>
   requests({ url: `/cart/checkCart/${skuId}/${isChecked}`, method: "get" });
+
+//获取验证码
+//URL:/api/user/passport/sendCode/{phone}   method :get
+
+export const reqGetCode = (phone) =>
+  requests({ url: `/user/passport/sendCode/${phone}`, method: "get" });
+
+//注册
+//url:/api/user/passport/register   method:post    phone code password  data是对象
+export const reqUserRegister = (data) =>
+  requests({ url: "/user/passport/register", data: data, method: "post" });
+
+//登录
+//URL:/api/user/passport/login method: post phone password
+export const reqUserLogin = (data) =>
+  requests({ url: "user/passport/login", data, method: "post" });
+
+//获取用户信息【需要带着用户的token向服务器要用户信息】
+// URL:/ api/user/passport/auth/getUserInfo   method : get
+export const reqUserInfo = () =>
+  requests({ url: "user/passport/auth/getUserInfo", method: "get" });
