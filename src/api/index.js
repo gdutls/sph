@@ -74,7 +74,20 @@ export const reqAddressInfo = () =>
     method: "get",
   });
 
-//获取商品清单
+//获取商品清单  接口没数据
 //URL：  /api/order/auth/trade   method:get
+// export const reqOrderInfo = () =>
+//   requests({ url: "/order/auth/trade", method: "get" });
+
+//模拟商品清单
 export const reqOrderInfo = () =>
-  requests({ url: "/order/auth/trade", method: "get" });
+  mockRequests({ url: "/order/auth/trade", method: "get" });
+
+//提交订单的接口
+//URL:/api/order/auth/submitorder?tradeNo={tradeNo} method:post
+export const reqSubmitOrder = (tradeNo, data) =>
+  requests({
+    url: `/order/auth/submitOrder?tradeNo=${tradeNo}`,
+    data,
+    method: "post",
+  });

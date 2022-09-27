@@ -1,0 +1,37 @@
+{
+    "totalAmount": 23996,
+    "userAddressList": [
+        {
+            "id": 2,
+            "userAddress": "广东省茂名市化州市",
+            "userId": 2,
+            "consignee": "admin",
+            "phoneNum": "15011111111",
+            "isDefault": "1"
+        }
+    ],
+    "tradeNo": "1b23c1efc8144bfc83e51807f4e71d3a",
+    "totalNum": 1,
+    "detailArrayList": [
+        {
+            "id": null,
+            "orderId": null,
+            "skuId": 4,
+            "skuName": "OPPO 一加 Ace 竞速版 12GB+256GB竞技灰享OPPO官方售后 天玑8100-MAX 120Hz变速电竞直屏游戏稳帧引擎5G手机",
+            "imgUrl": "https://img14.360buyimg.com/n0/jfs/t1/18849/39/16302/100333/6282704cE589fbd16/8e479b087fabe48f.jpg.avif",
+            "orderPrice": 5999,
+            "skuNum": 4,
+            "hasStock": null
+        },
+        {
+            "id": null,
+            "orderId": null,
+            "skuId": 5,
+            "skuName": "荣耀X30 骁龙6nm疾速5G芯 66W超级快充 120Hz全视屏 全网通版 8GB+128GB 钛空银",
+            "imgUrl": "https://img14.360buyimg.com/n0/jfs/t1/219583/26/7800/151098/61b8a3f2E2879c4f6/9b73c1d24e0abecb.jpg.avif",
+            "orderPrice": 3000,
+            "skuNum": 2,
+            "hasStock": null
+        }
+    ]
+}

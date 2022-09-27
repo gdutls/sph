@@ -14,11 +14,16 @@ import store from "@/store";
 import "swiper/css/swiper.css";
 //list接口坏了，暂不使用
 import { reqGetSearchInfo } from "@/api";
+
+//统一接收api文件夹里面全部请求函数
+//统一引入
+import * as API from "@/api";
 new Vue({
   render: (h) => h(App),
   // 全局事件总线$bus配置
   beforeCreate() {
     Vue.prototype.$bus = this;
+    Vue.prototype.$API = API;
   },
   router,
   store,
