@@ -164,8 +164,8 @@ export default {
       let result = await this.$API.reqSubmitOrder(tradeNo, data);
       //提交订单成功
       //一直提示重复订单，先跳转页面测试
-      // if (result.code == 200) {
-      if (true) {
+      if (result.code == 200) {
+        // if (true) {
         this.orderId = result.data;
         //路由跳转+路由传递参数
         this.$router.push("/pay?orderId=" + this.orderId);
