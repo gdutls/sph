@@ -119,6 +119,8 @@ export default {
     return {
       //收集买家留言
       msg: "",
+      //订单号
+      orderId: "",
     };
   },
   mounted() {
@@ -160,7 +162,17 @@ export default {
       };
       //需要带参数：tradeNo
       let result = await this.$API.reqSubmitOrder(tradeNo, data);
-      console.log(result);
+      //提交订单成功
+      //一直提示重复订单，先跳转页面测试
+      // if (result.code == 200) {
+      if (true) {
+        this.orderId = result.data;
+        //路由跳转+路由传递参数
+        this.$router.push("/pay?orderId=" + this.orderId);
+        //提交订单失败
+      } else {
+        alert(result.data);
+      }
     },
   },
 };

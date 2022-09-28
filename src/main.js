@@ -4,10 +4,15 @@ import TypeNav from "@/components/TypeNav";
 import Carsousel from "@/components/Carousel";
 //分页器
 import Pagination from "@/components/Pagination";
+import { Button, MessageBox } from "element-ui";
 //全局组件:第一个参数:组件名字  第二个参数:那个组件
 Vue.component(TypeNav.name, TypeNav);
 Vue.component(Carsousel.name, Carsousel);
 Vue.component(Pagination.name, Pagination);
+//element-ui 注册全局组件
+Vue.component(Button.name, Button);
+Vue.prototype.$msgbox = MessageBox;
+Vue.prototype.$alert = MessageBox.alert;
 import "@/mock/mockServe";
 import router from "@/router";
 import store from "@/store";
