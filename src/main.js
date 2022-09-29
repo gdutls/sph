@@ -23,6 +23,15 @@ import { reqGetSearchInfo } from "@/api";
 //统一接收api文件夹里面全部请求函数
 //统一引入
 import * as API from "@/api";
+import atm from "@/assets/1.gif";
+//图片懒加载
+import VueLazyload from "vue-lazyload";
+Vue.use(VueLazyload, {
+  //懒加载默认图片
+  loading: atm,
+});
+//引入表单验证插件
+import "@/plugins/validate";
 new Vue({
   render: (h) => h(App),
   // 全局事件总线$bus配置

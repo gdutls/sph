@@ -8,11 +8,6 @@ Vue.use(VueRouter);
 //引入store
 import store from "@/store";
 
-import Home from "@/pages/Home";
-import Search from "@/pages/Search";
-import Login from "@/pages/Login";
-import Register from "@/pages/Register";
-import Detail from "@/pages/Detail";
 //对外暴露VueRouter类的实例
 let router = new VueRouter({
   routes,

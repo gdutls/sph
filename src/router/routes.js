@@ -1,5 +1,4 @@
 import Home from "@/pages/Home";
-import Search from "@/pages/Search";
 import Login from "@/pages/Login";
 import Register from "@/pages/Register";
 import Detail from "@/pages/Detail";
@@ -33,11 +32,28 @@ export default [
     path: "/pay",
     component: Pay,
     meta: { show: true },
+    beforeEnter: (to, from, next) => {
+      if (from.path == "/trade") {
+        next();
+      } else {
+        next(false);
+      }
+    },
   },
   {
     path: "/trade",
     component: Trade,
     meta: { show: true },
+    //路由独享守卫
+    beforeEnter: (to, from, next) => {
+      //去交易页面，必须从购物车来
+      if (from.path == "/shopcart") {
+        next();
+      } else {
+        //其他的路由组件而来，停留在当前
+        next(false);
+      }
+    },
   },
   {
     path: "/shopcart",
@@ -61,8 +77,9 @@ export default [
     meta: { show: true },
   },
   {
+    //路由懒加载
     path: "/search/:keyword?",
-    component: Search,
+    component: () => import("@/pages/Search"),
     meta: { show: true },
     name: "search",
   },
